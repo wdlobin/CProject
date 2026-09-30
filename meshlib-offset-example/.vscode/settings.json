@@ -1,0 +1,32 @@
+{
+    "cmake.useCMakePresets": "always",
+    "cmake.options.statusBarVisibility": "hidden",
+    "cmake.options.advanced": {
+    "configurePreset": {
+        "statusBarVisibility": "compact",
+        "statusBarLength": 15
+    },
+    "build": {
+        "statusBarVisibility": "icon"
+    },
+    "launch": {
+        "statusBarVisibility": "icon"
+    },
+    "debug": {
+        "statusBarVisibility": "icon"
+    }
+},
+    "cmake.configureOnOpen": true,
+    "cmake.defaultConfigurePreset": "msvc-debug",
+    "cmake.defaultBuildPreset": "debug",
+    "cmake.defaultLaunchTarget": "MeshOffsetExample.exe",
+    "cmake.debugConfig": {
+        "cwd": "${workspaceFolder}",
+        "environment": [
+            {
+                "name": "PATH",
+                "value": "E:\\CLibrary\\MeshLib-3.1.4.297-msvc2022-x64\\install\\app\\Release;${env:PATH}"
+            }
+        ]
+    }
+}

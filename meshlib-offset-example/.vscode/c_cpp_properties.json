@@ -1,0 +1,17 @@
+{
+    "version": 4,
+    "configurations": [
+        {
+            "name": "Win32-MSVC",
+            "compilerPath": "C:\\Program Files (x86)\\Microsoft Visual Studio\\2022\\BuildTools\\VC\\Tools\\MSVC\\14.44.35207\\bin\\Hostx64\\x64\\cl.exe",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "E:/CLibrary/MeshLib-3.1.4.297-msvc2022-x64/install/include"
+            ],
+            "defines": ["_ITERATOR_DEBUG_LEVEL=0"],
+            "windowsSdkVersion": "10.0.26100.0",
+            "cppStandard": "c++20",
+            "intelliSenseMode": "windows-msvc-x64"
+        }
+    ]
+}

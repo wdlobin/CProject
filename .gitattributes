@@ -1,0 +1,54 @@
+# Detect text files and normalize their repository representation.
+* text=auto
+
+# Source code and build configuration use LF on every platform.
+*.c       text eol=lf
+*.cc      text eol=lf
+*.cpp     text eol=lf
+*.cxx     text eol=lf
+*.h       text eol=lf
+*.hh      text eol=lf
+*.hpp     text eol=lf
+*.hxx     text eol=lf
+*.inl     text eol=lf
+*.cmake   text eol=lf
+CMakeLists.txt text eol=lf
+
+# Project text and configuration files use LF.
+*.json    text eol=lf
+*.md      text eol=lf
+*.txt     text eol=lf
+*.yml     text eol=lf
+*.yaml    text eol=lf
+*.toml    text eol=lf
+*.xml     text eol=lf
+*.gitignore text eol=lf
+*.gitattributes text eol=lf
+
+# Scripts: Unix/PowerShell use LF; Windows command scripts use CRLF.
+*.sh      text eol=lf
+*.bash    text eol=lf
+*.ps1     text eol=lf
+*.bat     text eol=crlf
+*.cmd     text eol=crlf
+
+# Meshes, archives, executables, and common media are binary.
+*.stl     -text
+*.obj     -text
+*.step    -text
+*.stp     -text
+*.iges    -text
+*.igs     -text
+*.zip     -text
+*.7z      -text
+*.gz      -text
+*.pdf     -text
+*.png     -text
+*.jpg     -text
+*.jpeg    -text
+*.gif     -text
+*.ico     -text
+*.dll     -text
+*.exe     -text
+*.lib     -text
+*.pdb     -text

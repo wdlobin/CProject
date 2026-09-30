@@ -1,0 +1,41 @@
+{
+    "version": 6,
+    "cmakeMinimumRequired": { "major": 3, "minor": 21, "patch": 0 },
+    "configurePresets": [
+        {
+            "name": "msvc-base",
+            "hidden": true,
+            "generator": "Visual Studio 17 2022",
+            "architecture": "x64",
+            "cacheVariables": {
+                "MESHLIB_ROOT": "E:/CLibrary/MeshLib-3.1.4.297-msvc2022-x64"
+            }
+        },
+        {
+            "name": "msvc-debug",
+            "displayName": "MSVC 2022 x64 - Debug",
+            "inherits": "msvc-base",
+            "binaryDir": "${sourceDir}/out/build/msvc-debug"
+        },
+        {
+            "name": "msvc-release",
+            "displayName": "MSVC 2022 x64 - Release",
+            "inherits": "msvc-base",
+            "binaryDir": "${sourceDir}/out/build/msvc-release"
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "debug",
+            "displayName": "Build Debug",
+            "configurePreset": "msvc-debug",
+            "configuration": "Debug"
+        },
+        {
+            "name": "release",
+            "displayName": "Build Release",
+            "configurePreset": "msvc-release",
+            "configuration": "Release"
+        }
+    ]
+}
