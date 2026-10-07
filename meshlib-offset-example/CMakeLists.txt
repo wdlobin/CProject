@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-set(MESHLIB_ROOT "E:/CLibrary/MeshLib-3.1.4.297-msvc2022-x64" CACHE PATH "MeshLib VS22 root")
+set(MESHLIB_ROOT "E:/CLibrary/MeshLibDistVS22_v3.1.4.297" CACHE PATH "MeshLib VS22 root")
 set(MESHLIB_INCLUDE_DIR "${MESHLIB_ROOT}/install/include")
 set(MESHLIB_LIBRARY_DIR "${MESHLIB_ROOT}/install/lib/Release")
 set(MESHLIB_RUNTIME_DIR "${MESHLIB_ROOT}/install/app/Release")
