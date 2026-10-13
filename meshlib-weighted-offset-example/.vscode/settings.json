@@ -12,6 +12,9 @@
     "launch": {
         "statusBarVisibility": "icon"
     },
+    "launchTarget": {
+        "statusBarVisibility": "visible"
+    },
     "debug": {
         "statusBarVisibility": "icon"
     }

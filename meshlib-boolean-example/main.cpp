@@ -3,6 +3,9 @@
 #include <MRMesh/MRMeshSave.h>
 #include <MRMesh/MRUVSphere.h>
 #include <MRMesh/MRMeshLoad.h>
+#include <MRMesh/MRMatrix3.h>
+#include <MRMesh/MRAffineXf3.h>
+#include <chrono>
 
 #include <iostream>
 
@@ -40,11 +43,23 @@ int main()
     std::cout << "Input faces: " << mesh1.topology.numValidFaces() << '\n';
     MR::Mesh mesh2 = mesh1;
 
-    const MR::AffineXf3f xf =
-        MR::AffineXf3f::translation( MR::Vector3f( 0.07f, 0.0f, 0.0f ) );
-    mesh2.transform( xf );
+    const MR::AffineXf3f xf1 = MR::AffineXf3f::translation( MR::Vector3f( 0.0f, 0.25f, 0.0f ) );
+    // mesh2.transform( xf );
 
-    const auto outputDirectory = inputPath.parent_path() / "out";
+    // 角度转弧度
+    constexpr float pi = 3.14159265358979323846f;
+    const float angle = 180.0f * pi / 180.0f;
+
+    const MR::AffineXf3f xf2 = MR::AffineXf3f::linear(
+        MR::Matrix3f::rotation(
+            MR::Vector3f( 1.0f, 0.0f, 0.0f ), angle
+        )
+    );
+
+    mesh2.transform( xf2 );
+    mesh2.transform(xf1);
+
+    const std::filesystem::path outputDirectory = "output";
     const auto baseName = inputPath.stem().string();
 
     const auto originalPath = outputDirectory / (baseName + "_original.stl");
@@ -77,13 +92,22 @@ int main()
     // Track how input topology maps to the boolean result.
     MR::BooleanResultMapper mapper;
 
+    const auto start = std::chrono::steady_clock::now();
+
     // Compute the intersection of the two spheres.
     MR::BooleanResult result = MR::boolean(
         mesh1,
         mesh2,
-        MR::BooleanOperation::Intersection,
+        MR::BooleanOperation::Intersection, // 交集
+        // MR::BooleanOperation::DifferenceAB,    // 差集
         { .mapper = &mapper }
     );
+
+    const auto end = std::chrono::steady_clock::now();
+
+    const double elapsedMs = std::chrono::duration<double, std::milli>( end - start ).count();
+
+    std::cout << "耗时：" << elapsedMs << " ms\n";
 
     if ( !result.valid() )
     {
@@ -126,7 +150,7 @@ int main()
                   << newToOldFaces[resultFace] << '\n';
     }
 
-    const char* outputPath = "out/out_boolean.stl";
+    const char* outputPath = "output/out_boolean.stl";
     if ( const auto saveResult =
              MR::MeshSave::toAnySupportedFormat( resultMesh, outputPath );
          !saveResult )
